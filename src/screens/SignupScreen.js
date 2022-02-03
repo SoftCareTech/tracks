@@ -1,28 +1,32 @@
-import React, { useState, useContext } from "react";
-import { View, StyleSheet, TouchableOpacity } from 'react-native'
-import { Text, Input, Button } from 'react-native-elements'
-import Spacer from "../components/Spacer";
+import React, { useContext, useEffect } from "react";
+import { View, StyleSheet } from 'react-native'
 import { Context as AuthContext } from "../context/AuthContext";
 import AuthForm from "../components/AuthForm";
-const SignupScreen = ({ navigation }) => {
-    const { state, signup } = useContext(AuthContext)
-
+import NavLink from "../components/NavLink";
+import { NavigationEvents } from "react-navigation";
+const SignupScreen = () => {
+    const { state, tryLocalSignin, signup, clearErrorMessage } = useContext(AuthContext)
+    useEffect(() => {
+        tryLocalSignin()
+    }, []
+    )
 
     return <View style={styles.container}>
+        <NavigationEvents
+            onWillFocus={clearErrorMessage}
+        />
         <AuthForm title='Sign Up for Tracker'
             submitTitle='Sign Up'
             onSubmit={signup}
             errorMessage={state.errorMessage}
         />
-        <Spacer>
-            <TouchableOpacity onPress={() => {
-                navigation.navigate('Signin')
-            }}>
-                <Text style={styles.link}>
-                    Already have an account Sign in instead
-                </Text>
-            </TouchableOpacity>
-        </Spacer>
+        <NavLink
+            text={' Already have an account Sign in instead'}
+            routeName={'Signin'}
+
+        />
+
+
     </View>
 }
 
@@ -33,7 +37,6 @@ SignupScreen.navigationOptions = () => {
 };
 const styles = StyleSheet.create({
     container: {
-
         flex: 1
         , justifyContent: "center"
         , marginBottom: 100
