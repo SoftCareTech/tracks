@@ -5,11 +5,11 @@ export default (reducer, actions, initialState) => {
     const Provider = ({ children }) => {
         const [state, dispatch] = useReducer(reducer, initialState)
         // action === { addBlogPost:(dispatch)=>{return ()=>{}}} 
-        console.log(actions)
+
         const boundActions = {}
         for (let key in actions) {
             boundActions[key] = actions[key](dispatch)
-            console.log(key)
+
         }
 
         return <Context.Provider
