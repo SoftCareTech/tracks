@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ResoveAuthScreen from './src/screens/ResolveAuthScreen'
 import {
   createAppContainer,
   createSwitchNavigator
@@ -22,7 +22,7 @@ import { Provider as AuthProvider } from './src/context/AuthContext'
 
 const switchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
-
+    ResolveAuth: ResoveAuthScreen,
     Signup: SignupScreen,
     Signin: SigninScreen
   }),
