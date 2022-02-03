@@ -1,45 +1,27 @@
 import React, { useState, useContext } from "react";
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Text, Input, Button } from 'react-native-elements'
 import Spacer from "../components/Spacer";
 import { Context as AuthContext } from "../context/AuthContext";
-
+import AuthForm from "../components/AuthForm";
 const SignupScreen = ({ navigation }) => {
     const { state, signup } = useContext(AuthContext)
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
 
-   
+
     return <View style={styles.container}>
-        <Spacer>
-            <Text h3>Sign Up for Tracker</Text>
-        </Spacer>
-        <Spacer>
-            <Input label="Email"
-                autoCapitalize='none'
-                autoCorrect={false}
-                value={email}
-                onChangeText={setEmail}
-            />
-        </Spacer>
-        <Spacer> <Input
-            autoCapitalize='none'
-            autoCorrect={false}
-            secureTextEntry
-            label="Password"
-            value={password}
-            onChangeText={setPassword}
+        <AuthForm title='Sign Up for Tracker'
+            submitTitle='Sign Up'
+            onSubmit={signup}
+            errorMessage={state.errorMessage}
         />
-            {state.errorMessage ? <Text style={styles.errorMessage}>{state.errorMessage}</Text> : null}
-
-        </Spacer>
         <Spacer>
-
-            <Button title="Sign Up"
-                onPress={() => {
-                    signup({ email, password })
-                }}
-            />
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('Signin')
+            }}>
+                <Text style={styles.link}>
+                    Already have an account Sign in instead
+                </Text>
+            </TouchableOpacity>
         </Spacer>
     </View>
 }
@@ -56,9 +38,8 @@ const styles = StyleSheet.create({
         , justifyContent: "center"
         , marginBottom: 100
     },
-    errorMessage: {
-        color: 'red'
-        , fontSize: 16
+    link: {
+        color: 'blue'
     }
 })
 
