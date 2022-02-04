@@ -32,7 +32,7 @@ const switchNavigator = createSwitchNavigator({
       , TrackDetails: TrackDetailsScreen
     }),
 
-    TrackList: TrackCreateScreen,
+    TrackCreate: TrackCreateScreen,
     Account: AccountScreen,
   })
 })
