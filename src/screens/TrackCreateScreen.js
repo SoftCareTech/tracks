@@ -1,15 +1,16 @@
 
 import '../_mockLocation'
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { View, StyleSheet } from 'react-native'
 import { SafeAreaView } from "react-navigation";
 import Map from "../components/map";
 import { Text } from "react-native-elements";
 import Spacer from '../components/Spacer'
-
+import { Context as LocationContext } from '../context/LocationContext';
 import { requestForegroundPermissionsAsync, watchPositionAsync, Accuracy } from 'expo-location';
 
 const TrackCreateScreen = () => {
+    const {addLocation} = useContext(LocationContext)
     const [err, setErr] = useState('')
     const startWatching = async () => {
         try {
@@ -20,7 +21,7 @@ const TrackCreateScreen = () => {
                     , timeInterval: 1000,
                     distanceInterval: 10
                 }, (location) => {
-                    console.log(location)
+                   addLocation(location)
                 })
             } else {
                 throw new Error('Location permission not granted');
