@@ -5,7 +5,7 @@ import { Text } from "react-native-elements";
 import MapView, { Polyline, Circle } from "react-native-maps";
 import { Context as LocationContext } from "../context/LocationContext";
 const Map = () => {
-    const { state: { currentLocation } } = useContext(LocationContext)
+    const { state: { currentLocation, locations } } = useContext(LocationContext)
 
     if (!currentLocation)
         return <ActivityIndicator
@@ -27,16 +27,19 @@ const Map = () => {
         >
             <Circle
                 radius={30}
-                strokeColor='rgba(158,158,255,1.0)'
+                strokeColor='rgba(158,0,2,1.0)'
                 fillColor="rgba(158,158,255,0.2)"
                 center={currentLocation.coords}
             />
+
+            {locations != null ? <Polyline coordinates={locations.map(location => location.coords)} lineDashPattern={[1]} /> : null}
+
         </MapView>
     </ >
 }
 const styles = StyleSheet.create({
     map: {
-        height: 400,
+        height: 200,
     }
 })
 export default Map
