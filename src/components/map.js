@@ -20,22 +20,16 @@ const Map = () => {
             initialRegion={{
                 ...currentLocation.coords,
                 latitudeDelta: 0.01,
-                longitudeDelta: 0.01
-            }
-            }
-
-        >
+                longitudeDelta: 0.01 }  }  >
             <Circle
                 radius={30}
-                strokeColor='rgba(158,0,2,1.0)'
-                fillColor="rgba(158,158,255,0.2)"
-                center={currentLocation.coords}
-            />
-
-            {locations != null ? <Polyline coordinates={locations.map(location => location.coords)} lineDashPattern={[1]} /> : null}
-
-        </MapView>
-    </ >
+                strokeColor='rgba(158,158,255,1.0)'
+                fillColor="rgba(158,158,255,0.3)"
+                center={currentLocation.coords} />
+                <Polyline coordinates={locations.map(location => 
+                 location.coords)}  /> 
+                 </MapView>
+    </>
 }
 const styles = StyleSheet.create({
     map: {

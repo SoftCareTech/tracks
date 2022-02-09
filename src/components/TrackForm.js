@@ -17,12 +17,18 @@ console.log(locations.length)
     onChangeText={changeName}
     placeholder='Enter name' />
     </Spacer>
-
+   <Spacer>
     {recording? <Button title='Stop '
     onPress={stopRecording}
     />: <Button title='Start Recording'
     onPress={startReccording}
     />} 
+   </Spacer>
+    {!recording&& locations.length?(
+    <Spacer>
+    <Button title='Save Recording'/>
+    </Spacer>
+    ):null  }
     </>
 }
 
