@@ -8,10 +8,9 @@ export default () => {
     const { state: { locations, name }, reset } = useContext(LocationContext)
 
     const saveTrack = async () => {
-        await createTrasck(name, locations)
+        await createTrack(name, locations)
         reset()
         navigate('TrackList')
-    }
-s
+    } 
     return [saveTrack]
 }

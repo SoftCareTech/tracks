@@ -11,5 +11,10 @@ const ResoveAuthScreen = () => {
 
     return null
 }
+ResoveAuthScreen.navigationOptions = () => {
+    return {
+        headerShown: false,
+    };
+};
 export default ResoveAuthScreen
 

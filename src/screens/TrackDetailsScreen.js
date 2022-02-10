@@ -12,8 +12,6 @@ const _id = navigation.getParam('_id')
   const track = state.find(t=>t._id===_id)  
    const initialCoords= track.locations[0].coords 
     return<>
-    <Text h1>
-     Track Details </Text>
 <Text h3>  {track.name} </Text>
 <MapView
 initialRegion={{
@@ -28,7 +26,9 @@ style={styles.map}
 </>
 }
 
-
+TrackDetailsScreen.navigationOptions = { 
+        title:'Track'
+};
 const styles = StyleSheet.create({
  map:{
      height:250

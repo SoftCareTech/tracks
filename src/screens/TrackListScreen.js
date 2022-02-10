@@ -7,7 +7,7 @@ const TrackListScreen = ({ navigation }) => {
  const {state,fetchTracks} = useContext(TrackContext)
 
     return <>
-     <Text h1> TrackListScreen </Text>
+    
     <NavigationEvents 
     onWillFocus={fetchTracks} 
      />
@@ -32,7 +32,9 @@ const TrackListScreen = ({ navigation }) => {
     </>
 }
 
-
+TrackListScreen.navigationOptions =  { 
+        title:'Tracks'
+};
 const styles = StyleSheet.create({
 
 })

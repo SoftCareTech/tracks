@@ -4,13 +4,11 @@ import  Spacer from './Spacer'
 import {Context as LocationContext} from '../context/LocationContext'
 import useSaveTrack from '../hooks/useSaveTrack'
 const TrackForm =()=>{
-const {
-     state:{name,recording, locations },
-    startReccording, stopRecording,  
- changeName}  = useContext(LocationContext)
- const [saveTrack]= useSaveTrack()
+const { state:{name,recording, locations },
+    startReccording, stopRecording, changeName}  = useContext(LocationContext)
 
-
+ const [saveTrack]= useSaveTrack() 
+ 
     return <>
     <Spacer> 
     <Input 
